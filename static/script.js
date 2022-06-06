@@ -30,6 +30,7 @@ function day(){
 	document.body.style.background = "linear-gradient(90deg, rgba(48,66,161,1) 0%, rgba(34,117,148,1) 50%, rgba(212,209,203,1) 100%)";
 	nav.style.backgroundColor = "#eee";
 	var elements = document.getElementsByClassName("article");
+	
 	for(var i = 0; i < elements.length; i++) {
 		elements[i].style.backgroundColor = "#a6acf4";
 	}
