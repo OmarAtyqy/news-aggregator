@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>e-M'Agg</title>
+</head>
+
+<body>
+  <div class="background_img">
+    <div class="middle">
+      <h1>Welcome to e-M'Agg!</h1>
+      <hr>
+      <p style="font-size:25px"><b>The one News Aggregator that brings the latest happenings of the World to your
+          doorstep!</b></p>
+      <hr>
+      <a href="index/">
+        <button class="button" type="button"><b>Explore Articles</b></button>
+      </a>
+    </div>
+  </div>
+</body>
+
+<style>
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+  }
+
+  .background_img {
+    background-image: url('../static/globe.jpg');
+    height: 100%;
+    background-size: cover;
+    position: relative;
+    color: white;
+    font-family: "Goudy Old Style";
+    font-size: 30px;
+  }
+
+  .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  hr {
+    margin: auto;
+    width: 55%;
+  }
+
+  .button {
+    position: relative;
+    background-color: white;
+    border-radius: 64px;
+    font-size: 18px;
+    font-family: "Calibri";
+    color: black;
+    padding: 11px 27px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    margin: 40px;
+  }
+
+  .button:hover {
+    transition-duration: 0.4;
+    background-color: #baaace;
+  }
+
+  .button:after {
+    display: block;
+    position: absolute;
+    border-radius: 64px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px 40px white;
+  }
+
+  .button:active:after {
+    box-shadow: 0 0 0 0 white;
+    position: absolute;
+    border-radius: 64px;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: 0s;
+  }
+
+  .button:active {
+    top: 1px;
+  }
+</style>
+
+</html>

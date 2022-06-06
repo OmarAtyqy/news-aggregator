@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="{% static 'script.js' %}"></script>
+    <title>e-M'agg: Your Personalized Newsletter</title>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
+        <h2>Search Dashboard</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="box">
+                {{form.keywords}}
+            </div>
+            <br>
+            <h3>Languages</h3>
+            <div class="box">
+                {{ form.fr.label_tag }}
+                {{form.fr}}
+                {{ form.ar.label_tag }}
+                {{form.ar}}
+                {{ form.en.label_tag }}
+                {{form.en}}
+            </div>
+            <h3>Sources</h3>
+            <div class="box">
+                {{ form.hespress.label_tag }}
+                {{form.hespress}}
+                {{ form.france24.label_tag }}
+                {{form.france24}}
+                {{ form.map.label_tag }}
+                {{form.map}}
+                {{ form.euronews.label_tag }}
+                {{form.euronews}}
+            </div>
+
+            <button type="submit" class="b2" id="b2"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <a href="save" class="b3" id="b3"><i class="fa-solid fa-file-csv"></i></a>
+        </form>
+
+        <div class="stats-box">
+            <h3>Stats:</h3>
+            <p>Query time: {{result.time}}s </p>
+            <p>Hespress: {{result.n_hespress}} articles /
+            Euronews: {{result.n_euronews}} articles</p>
+            <p>MAP: {{result.n_map}} articles / 
+            France24: {{result.n_france24}} articles</p>
+        </div>
+      </div>
+
+    <nav id="nav">
+        <span class="open-bnt" id="open-bnt" onclick="showPopUp()"><i class="fa-solid fa-question"></i></span>
+        <div class="popup" id="popup">
+            <button class="close-bnt" id="close-bnt" onclick="hidePopUp()">X</button>
+            <p>This web app was developed by the ENSIAS students :</p>
+            <ul>
+                <li>Omar El Atyqy</li>
+                <li>Bouchra Sahri </li>
+                <li>Hamza Ba-mohammed</li>
+                <li>Hanae Kolone</li>
+            </ul>
+            <p>as a part of their AI Freshman's Year Final Project, May 2022.</p>
+        </div>
+        <span href="javascript:void(0)" onclick="openNav()">&#9776;</span>
+        <span>e-M'agg</span>
+        <span href="javascript:void(0)" onclick="night()"><i class="fa-solid fa-moon"></i></span>
+        <span href="javascript:void(0)" onclick="day()"><i class="fa-solid fa-sun"></i></span>
+    </nav>
+    <div class="results">
+        
+        {% load social_share %}
+        {% for object in object_list  %}
+
+        <div class="article"  style="cursor: pointer;">
+            {% if object.image == ""%}
+            <img onclick="window.open('{{object.link}}','myWindow');" src='{% static "oops.jpg" %}' alt="cover">
+            {% else %}
+            <img onclick="window.open('{{object.link}}','myWindow');" src='{{object.image}}' alt="cover">
+            {% endif %}
+            
+            <h2>{{object.title|truncatechars:50}}</h2>
+            <p>{{object.source}}</p>
+            <p>{{object.date}}</p>
+            <div class="social">
+                {% post_to_twitter object.link %}
+                {% post_to_facebook object.link %}
+                {% post_to_whatsapp object.link %}
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</body>
+</html>
