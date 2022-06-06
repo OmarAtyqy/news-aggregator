@@ -31,8 +31,9 @@ a:hover,span:hover{
     height: 100%;
     background: rgba(0,0,0,0.3);
 }
-.sidenav {
+#mySidenav {
     height: 100%;
+    width: 0%;
     text-align: center;
     position: fixed;
     z-index: 1;
@@ -174,7 +175,6 @@ a:hover,span:hover{
     width: 100%;
     padding: 1%;
     display: block;
-    margin-top: 5rem;
 }
 .stats-box p{
     color: #fff;
@@ -255,7 +255,7 @@ a:hover,span:hover{
     }
     .article {
         display: flex;
-        width: 90%;
+        width: 100%;
         min-width: 175px;
         padding: 2%;
         margin: 1%;
