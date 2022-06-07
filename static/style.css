@@ -235,8 +235,8 @@ a:hover,span:hover{
 
 .social {
     display: flex;
-    justify-content: center;
-    text-align: center;
+    height: 10rem;
+    align-items: center;
 }
 
 .whatsapp-this a, .facebook-this a, .tweet-this a {

@@ -62,7 +62,7 @@
         <span class="open-bnt" id="open-bnt" onclick="showPopUp()"><i class="fa-solid fa-question"></i></span>
         <div class="popup" id="popup">
             <button class="close-bnt" id="close-bnt" onclick="hidePopUp()">X</button>
-            <p>This web app was developed by the ENSIAS students :</p>
+            <p>This web app was developed by ENSIAS students :</p>
             <ul>
                 <li>Omar El Atyqy</li>
                 <li>Bouchra Sahri </li>
@@ -91,7 +91,7 @@
             <h2>{{object.title|truncatechars:50}}</h2>
             <p>{{object.source}}</p>
             <p>{{object.date}}</p>
-            <div class="social">
+            <div style="margin-top: 5rem;" class="social">
                 {% post_to_twitter object.link %}
                 {% post_to_facebook object.link %}
                 {% post_to_whatsapp object.link %}
