@@ -4,7 +4,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
   path('', welcome_view, name="welcome"),
-  path('save/', save_file, name="save"),
+  path('index/save/', save_file, name="save"),
   path('index/', main_view, name="home")
 ]
 

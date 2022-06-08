@@ -2,7 +2,6 @@ import hashlib
 import pymongo
 from time import time
 import csv
-import os.path
 
 sources = ("euronews", "map", "hesspress", "france24")
 langs = ("en", "fr", "ar")
@@ -66,17 +65,12 @@ class Result:
         return res
     
     def saveToCsv(self):
-        
-        # check if csv file already exists
-        exists = os.path.exists("data.csv")
 
         with open("data.csv", "w") as f:
 
             writer = csv.writer(f, dialect=csv.excel)
-            
-            # if the save file doesn't exist, write the header row
-            if not exists:
-                writer.writerow(["title", "image", "link", "date", "language", "source"])
+
+            writer.writerow(["title", "image", "link", "date", "language", "source"])
             
             # write data to csv file
             for article in self.articles_list:
@@ -115,8 +109,9 @@ class Database:
             except pymongo.errors.DuplicateKeyError:
                 pass
     
-    def query(self, keyword, lang, source):
+    def query(self, keyword, lang, source, limit=150):
         result = Result(lang, source)
+        i = 0
 
         # constructing query
         query = {}

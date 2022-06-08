@@ -57,26 +57,17 @@ def main_view(request):
 
             # query the database
             result = db.query(keywords, languages, sources)
-            result.articles_list = result.articles_list[::-1]
 
         else:
             result = db.query("", "", "")
-            result.articles_list = result.articles_list[::-1]
-
-            if len(result.articles_list) > 200:
-                result.articles_list = result.articles_list[:150]
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = QueryForm()
         result = db.query("", "", "")
-        result.articles_list = result.articles_list[::-1]
-
-        if len(result.articles_list) > 150:
-            result.articles_list = result.articles_list[:150]
 
     # loop over articles found in query and add then objet list
-    for article in result.articles_list:
+    for article in result.articles_list[::-1]:
         new_headline = Headline()
 
         new_headline.image = article.document['image']
