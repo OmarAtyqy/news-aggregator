@@ -66,7 +66,7 @@ class Result:
     
     def saveToCsv(self):
 
-        with open("data.csv", "w") as f:
+        with open("data.csv", "w", newline='') as f:
 
             writer = csv.writer(f, dialect=csv.excel)
 

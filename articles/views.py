@@ -6,7 +6,7 @@ import mimetypes
 import os
 from django.http.response import HttpResponse
 
-scrapers_list = [scrapers.Euronews(), scrapers.France24(), scrapers.Hespress(), scrapers.Map()]
+scrapers_list = [scrapers.Euronews(), scrapers.France24(), scrapers.Hespress()]
 
 # database object to communicate with database
 db = objects.Database()
